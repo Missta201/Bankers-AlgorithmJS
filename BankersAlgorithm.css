@@ -147,3 +147,46 @@ td,
 th {
   padding: 5px;
 }
+
+.btn-secondary {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600; /* Đậm hơn một chút */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
+  background-color: #024453; /* Màu xanh đậm tương tự */
+  border: none;
+  border-radius: 10px; /* Bo tròn nút */
+  padding: 10px 20px; /* Khoảng cách bên trong */
+  text-transform: uppercase; /* Chữ in hoa */
+  transition: all 0.3s ease; /* Hiệu ứng mượt khi hover */
+}
+
+.btn-secondary:hover {
+  background-color: #026778; /* Màu khi hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng nổi */
+}
+
+.btn-secondary:focus {
+  outline: none; /* Loại bỏ viền mặc định */
+  box-shadow: 0 0 10px rgba(2, 67, 83, 0.8); /* Viền sáng khi focus */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.subheading {
+  font-size: 100px;
+  font-weight: 400;
+  margin: 20px 0;
+  color: #000;
+}
+
+.gradient-text {
+  font-size: 100px;
+  font-weight: 700; /* Chữ đậm hơn */
+  background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
