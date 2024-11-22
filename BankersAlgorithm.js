@@ -10,9 +10,9 @@ function reset() {
   document.getElementById("av11").value = "";
   document.getElementById("av12").value = "";
   document.getElementById("av13").value = "";
-  document.getElementById("resourceA").value = "";
-  document.getElementById("resourceB").value = "";
-  document.getElementById("resourceC").value = "";
+  // document.getElementById("resourceA").value = "";
+  // document.getElementById("resourceB").value = "";
+  // document.getElementById("resourceC").value = "";
   document.body.style.backgroundColor = "#ffffff";
 }
 
@@ -32,32 +32,52 @@ function example() {
     [2, 2, 2],
     [4, 3, 3],
   ];
+
+  // Thêm giá trị Allocation và Max
   for (var i = 1; i <= 5; i++) {
     for (var j = 1; j <= 3; j++) {
       document.getElementById("a" + i + j).value = sam[i - 1][j - 1];
       document.getElementById("m" + i + j).value = max[i - 1][j - 1];
     }
   }
-  document.getElementById("resourceA").value = 10;
-  document.getElementById("resourceB").value = 5;
-  document.getElementById("resourceC").value = 7;
+
+  // Giá trị tài nguyên tổng
+  // document.getElementById("resourceA").value = 10;
+  // document.getElementById("resourceB").value = 5;
+  // document.getElementById("resourceC").value = 7;
+
+  // Giá trị mẫu cho bảng Available
+  document.getElementById("av11").value = 3;
+  document.getElementById("av12").value = 3;
+  document.getElementById("av13").value = 2;
 }
 
 function find_avai() {
-  var a = document.getElementById("resourceA").value;
-  var b = document.getElementById("resourceB").value;
-  var c = document.getElementById("resourceC").value;
-  var x = 0;
-  var y = 0;
-  var z = 0;
-  for (var i = 1; i <= 5; i++) {
-    var x = x + parseInt(document.getElementById("a" + i + "1").value);
-    var y = y + parseInt(document.getElementById("a" + i + "2").value);
-    var z = z + parseInt(document.getElementById("a" + i + "3").value);
+  // Lấy giá trị Available hiện tại
+  var av11 = parseInt(document.getElementById("av11").value) || 0;
+  var av12 = parseInt(document.getElementById("av12").value) || 0;
+  var av13 = parseInt(document.getElementById("av13").value) || 0;
+
+  // Nếu Available chưa có giá trị, tính toán từ Allocation và resource tổng
+  if (av11 === 0 && av12 === 0 && av13 === 0) {
+    var a = parseInt(document.getElementById("resourceA").value) || 0;
+    var b = parseInt(document.getElementById("resourceB").value) || 0;
+    var c = parseInt(document.getElementById("resourceC").value) || 0;
+
+    var x = 0;
+    var y = 0;
+    var z = 0;
+
+    for (var i = 1; i <= 5; i++) {
+      x += parseInt(document.getElementById("a" + i + "1").value) || 0;
+      y += parseInt(document.getElementById("a" + i + "2").value) || 0;
+      z += parseInt(document.getElementById("a" + i + "3").value) || 0;
+    }
+
+    document.getElementById("av11").value = a - x;
+    document.getElementById("av12").value = b - y;
+    document.getElementById("av13").value = c - z;
   }
-  document.getElementById("av11").value = a - x;
-  document.getElementById("av12").value = b - y;
-  document.getElementById("av13").value = c - z;
 }
 
 function find_need() {
