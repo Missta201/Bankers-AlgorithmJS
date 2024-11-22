@@ -73,50 +73,78 @@ function find_need() {
 function run_algo() {
   find_avai();
   find_need();
-  var k = 1;
-  var q = 1;
-  for (var j = 1; j <= 5; j++) {
-    x1 = parseInt(document.getElementById("av11").value);
-    x2 = parseInt(document.getElementById("av12").value);
-    x3 = parseInt(document.getElementById("av13").value);
-    for (var i = k; i <= 5; i++) {
-      var ex1 = parseInt(document.getElementById("a" + i + "1").value);
-      var ex2 = parseInt(document.getElementById("a" + i + "2").value);
-      var ex3 = parseInt(document.getElementById("a" + i + "3").value);
-      if (ex1 != 0 || ex2 != 0 || ex3 != 0) {
-        if (
-          x1 >= parseInt(document.getElementById("n" + i + "1").value) &&
-          x2 >= parseInt(document.getElementById("n" + i + "2").value) &&
-          x3 >= parseInt(document.getElementById("n" + i + "3").value)
-        ) {
-          document.getElementById("p" + q).value = "P" + i;
+
+  var finished = [false, false, false, false, false]; // Đánh dấu trạng thái tiến trình
+  var safeSequence = []; // Mảng lưu trữ thứ tự tiến trình đã hoàn thành
+  var numFinished = 0; // Số tiến trình đã hoàn thành
+
+  while (numFinished < 5) {
+    var found = false; // Kiểm tra xem có tiến trình nào được hoàn thành trong vòng lặp này
+
+    for (var i = 1; i <= 5; i++) {
+      if (!finished[i - 1]) {
+        // Nếu tiến trình chưa hoàn thành
+        var x1 = parseInt(document.getElementById("av11").value);
+        var x2 = parseInt(document.getElementById("av12").value);
+        var x3 = parseInt(document.getElementById("av13").value);
+
+        var need1 = parseInt(document.getElementById("n" + i + "1").value);
+        var need2 = parseInt(document.getElementById("n" + i + "2").value);
+        var need3 = parseInt(document.getElementById("n" + i + "3").value);
+
+        if (x1 >= need1 && x2 >= need2 && x3 >= need3) {
+          // Nếu tiến trình có thể hoàn thành
+          found = true; // Có ít nhất một tiến trình được hoàn thành
+          finished[i - 1] = true; // Đánh dấu tiến trình này đã hoàn thành
+          safeSequence.push("P" + i); // Thêm tiến trình vào thứ tự an toàn
+          numFinished++; // Tăng số tiến trình đã hoàn thành
+
+          // Cập nhật tài nguyên khả dụng (Available)
           document.getElementById("av11").value =
-            parseInt(document.getElementById("av11").value) +
-            parseInt(document.getElementById("a" + i + "1").value);
+            x1 + parseInt(document.getElementById("a" + i + "1").value);
           document.getElementById("av12").value =
-            parseInt(document.getElementById("av12").value) +
-            parseInt(document.getElementById("a" + i + "2").value);
+            x2 + parseInt(document.getElementById("a" + i + "2").value);
           document.getElementById("av13").value =
-            parseInt(document.getElementById("av13").value) +
-            parseInt(document.getElementById("a" + i + "3").value);
-          document.getElementById("a" + i + "1").value = "0";
-          document.getElementById("a" + i + "2").value = "0";
-          document.getElementById("a" + i + "3").value = "0";
-          k = i + 1;
-          if (k == 6) {
-            k = 1;
-          }
-          q = q + 1;
-          break;
+            x3 + parseInt(document.getElementById("a" + i + "3").value);
+
+          break; // Thoát vòng lặp để bắt đầu lại kiểm tra từ tiến trình đầu tiên
         }
       }
     }
+
+    if (!found) {
+      // Nếu không có tiến trình nào được hoàn thành trong vòng lặp, hệ thống bị Deadlock
+      var deadlockProcesses = []; // Danh sách các tiến trình gây ra Deadlock
+      for (var i = 1; i <= 5; i++) {
+        if (!finished[i - 1]) {
+          deadlockProcesses.push("P" + i);
+        }
+      }
+
+      // Hiển thị trạng thái Deadlock
+      alert(
+        "Deadlock!!\nTiến trình an toàn tới: " +
+          safeSequence.join(" -> ") +
+          "\nTiến trình gặp Deadlock tại: " +
+          deadlockProcesses.join(", ")
+      );
+
+      // Hiển thị Process Sequence trong giao diện
+      for (var i = 1; i <= safeSequence.length; i++) {
+        document.getElementById("p" + i).value = safeSequence[i - 1];
+      }
+
+      document.body.style.backgroundColor = "#ff7171";
+      return; // Kết thúc hàm
+    }
   }
-  if (q != 6) {
-    alert("Deadlock!!");
-    document.body.style.backgroundColor = "#ff7171";
-  } else {
-    document.body.style.backgroundColor = "#28df99";
-    alert("Safe!!");
+
+  // Nếu tất cả tiến trình hoàn thành, hệ thống ở trạng thái an toàn
+  document.body.style.backgroundColor = "#28df99";
+  alert("Safe!! \nThứ tự an toàn là: " + safeSequence.join(" -> "));
+
+  // Hiển thị Process Sequence trong giao diện
+  for (var i = 1; i <= 5; i++) {
+    document.getElementById("p" + i).value = safeSequence[i - 1] || "";
   }
 }
