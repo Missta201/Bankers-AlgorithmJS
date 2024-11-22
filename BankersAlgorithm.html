@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -16,10 +19,13 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./BankersAlgorithm.css" />
+    <!-- Title of the page -->
     <title>Giải thuật Banker's</title>
   </head>
   <body id="body">
+    <!-- Background Animation Starts -->
     <div class="container">
       <ul class="circles">
         <li></li>
@@ -34,19 +40,22 @@
         <li></li>
       </ul>
     </div>
+    <!-- Background Animation Ends -->
 
+    <!-- Main Algo Implementation Starts -->
     <div class="container pt-5">
       <h1 class="text-center subheading">
         <span class="gradient-text">Banker's</span> Algorithm
       </h1>
     </div>
     <div class="container">
-      <!-- <div class="row p-2 pt-5">
-        <div class="col-4 text-center">
+      <div class="row p-2 pt-5">
+        <!-- Total Instance Form Starts -->
+        <!-- <div class="col-4 text-center">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"
-                >Số lượng thể hiện tài nguyên A:</span
+                >No of Instances of Resource A</span
               >
             </div>
             <input
@@ -58,12 +67,12 @@
               required
             />
           </div>
-        </div>
-        <div class="col-4 text-center">
+        </div> -->
+        <!-- <div class="col-4 text-center">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"
-                >Số lượng thể hiện tài nguyên B:</span
+                >No of Instances of Resource B</span
               >
             </div>
             <input
@@ -75,12 +84,12 @@
               required
             />
           </div>
-        </div>
-        <div class="col-4 text-center">
+        </div> -->
+        <!-- <div class="col-4 text-center">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"
-                >Số lượng thể hiện tài nguyên C:</span
+                >No of Instances of Resource C</span
               >
             </div>
             <input
@@ -92,12 +101,13 @@
               required
             />
           </div>
-        </div>
-      </div> -->
+        </div> -->
+        <!-- Total Instance Form Ends -->
+      </div>
     </div>
-
     <div class="container pt-5">
       <div class="row">
+        <!-- Allocation Form Starts -->
         <div class="col-3 text-center">
           <table class="text-center">
             <thead>
@@ -145,7 +155,9 @@
             </tbody>
           </table>
         </div>
+        <!-- Allocation Form Ends -->
 
+        <!-- Max Form Starts -->
         <div class="col-3 text-center">
           <table class="text-center">
             <thead>
@@ -193,7 +205,9 @@
             </tbody>
           </table>
         </div>
+        <!-- Max Form Ends -->
 
+        <!-- Need Form Starts -->
         <div class="col-3 text-center">
           <table class="text-center">
             <thead>
@@ -241,7 +255,9 @@
             </tbody>
           </table>
         </div>
+        <!-- Need Form Ends -->
 
+        <!-- Available Form Starts -->
         <div class="col-3 text-center">
           <table class="text-center">
             <thead>
@@ -265,8 +281,10 @@
             </tbody>
           </table>
         </div>
+        <!-- Available Form Ends -->
       </div>
 
+      <!-- Algo Buttons Starts -->
       <div class="row m-5 text-center">
         <div class="col-4">
           <a href="#" class="btn btn-secondary" onclick="example()">Example</a>
@@ -283,9 +301,10 @@
         </div>
       </div>
 
+      <!-- Trình tự quy trình -->
       <div class="row p-3 mt-3 mb-3">
         <div class="col-6 offset-4">
-          <h4>Thứ tự an toàn là :</h4>
+          <h4>Trình tự trạng thái an toàn :</h4>
           <br />
           <input id="p1" size="2" maxlength="2" />&nbsp
           <input id="p2" size="2" maxlength="2" />&nbsp
@@ -296,6 +315,24 @@
       </div>
     </div>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Custom JavaScript -->
     <script src="./BankersAlgorithm.js"></script>
   </body>
 </html>
