@@ -1,4 +1,4 @@
-# Bankers-Algorithm-Js
+# Banker's Algorithm
 
 Công nghệ sử dụng:
 
